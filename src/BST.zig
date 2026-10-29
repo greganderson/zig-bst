@@ -75,10 +75,39 @@ pub const BST = struct {
         }
     }
 
-    // pub fn traverseInOrder(bst: *BST) void {
-    //     // TODO: Implement
-    //     return;
-    // }
+    pub fn traverseInOrder(bst: *BST) void {
+        if (bst.root == null) return;
+
+        bst.traverseInOrderRecursive(bst.root.?);
+    }
+
+    fn traverseInOrderRecursive(bst: *BST, parent: *Node) void {
+        if (parent.left != null) {
+            bst.traverseInOrderRecursive(parent.left.?);
+        }
+
+        std.debug.print("Node: {d}\n", .{parent.value});
+
+        if (parent.right != null) {
+            bst.traverseInOrderRecursive(parent.right.?);
+        }
+    }
+
+    pub fn traverseNormalOrderOrWhateverItsCalled(bst: *BST) void {
+        if (bst.root == null) return;
+
+        bst.traverseNormalOrderOrWhateverItsCalledRecursive(bst.root.?);
+    }
+
+    fn traverseNormalOrderOrWhateverItsCalledRecursive(bst: *BST, parent: *Node) void {
+        std.debug.print("Node: {d}\n", .{parent.value});
+        if (parent.left != null) {
+            bst.traverseNormalOrderOrWhateverItsCalledRecursive(parent.left.?);
+        }
+        if (parent.right != null) {
+            bst.traverseNormalOrderOrWhateverItsCalledRecursive(parent.right.?);
+        }
+    }
 
     pub fn len(bst: *BST) u16 {
         return bst.size;
