@@ -41,6 +41,8 @@ pub fn main(init: std.process.Init) !void {
     std.debug.print("Should be 5, 7, -3, 0, -1, 1, 9, 6\n", .{});
 
     bst.traverseNormalOrderOrWhateverItsCalled();
+
+    // Next up, make the BST generic!
 }
 
 fn checkValue(bst: *BST, value: i32, should_find: bool) void {

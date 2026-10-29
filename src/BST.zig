@@ -10,6 +10,16 @@ pub const BST = struct {
         return .{ .allocator = allocator };
     }
 
+    pub fn initFromString(allocator: std.mem.Allocator, nodes: []const i32) BST {
+        // I want to be able to accept a string and output the BST, so I need to
+        // split on the delimiter (maybe accept that as a parameter?) and loop
+        // over the array.
+        const bst: BST = .init(allocator);
+        for (nodes) |node| {
+            bst.insert(node);
+        }
+    }
+
     fn createNode(bst: *BST, value: i32) !*Node {
         const node = try bst.allocator.create(Node);
         node.* = .{ .value = value };
